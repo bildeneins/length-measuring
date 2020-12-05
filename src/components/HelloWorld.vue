@@ -83,36 +83,6 @@
       >
         出力
       </button>
-      <button
-        class="btn col-3 disabled mr-2 rounded-0"
-        type="submit"
-        key="button5"
-        v-on:click="onclick5"
-      ></button>
-      <button
-        class="btn col-3 disabled mr-2 rounded-0"
-        type="submit"
-        key="button5"
-        v-on:click="onclick5"
-      ></button>
-      <button
-        class="btn col-3 disabled mr-2 rounded-0"
-        type="submit"
-        key="button5"
-        v-on:click="onclick5"
-      ></button>
-      <button
-        class="btn col-3 disabled mr-2 rounded-0"
-        type="submit"
-        key="button5"
-        v-on:click="onclick5"
-      ></button>
-      <button
-        class="btn col-3 disabled mr-2 rounded-0"
-        type="submit"
-        key="button5"
-        v-on:click="onclick5"
-      ></button>
     </div>
   </div>
 </template>
