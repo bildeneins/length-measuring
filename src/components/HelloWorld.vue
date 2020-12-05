@@ -31,7 +31,7 @@
     <br><br>
 
 
-    <image-viewer> </image-viewer>
+    <image-viewer v-on:update="updateCanvas"> </image-viewer>
     
     <br><br>
     <div class="float-right">
@@ -57,10 +57,14 @@ export default {
   data(){
     return{
       length:'10',
-      time:'10'
+      time:'10',
+      imageCanvas: null, // ImageViewerに入っているCanvas要素
     }
   },
-  methods:{  
+  methods:{
+    updateCanvas(canvas) {
+      this.imageCanvas = canvas
+    },
     onclick1: function(){
       console.log('開始');
     },

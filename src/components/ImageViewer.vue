@@ -58,6 +58,9 @@ export default {
       context.clearRect(0,0,this.canvasWidth,this.canvasHeight)
       this.drawPicture()
       this.drawRuler()
+
+      // 親要素にcanvasを送信
+      this.$emit('update', canvas)
     },
     drawPicture() {
       // 検査品の画像を描画
