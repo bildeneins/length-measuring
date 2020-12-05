@@ -89,6 +89,23 @@
 
 <script>
 import ImageViewer from "@/components/ImageViewer";
+const remote = require("remote");
+const fs = remote.require("fs");
+const os = remote.require("os");
+const dataUriToBuffer = remote.require("data-uri-to-buffer");
+// const fs = require("fs");
+// const os = require("os");
+// const dataUriToBuffer = require("data-uri-to-buffer");
+
+const path = require("path");
+
+// ファイルの保存先
+const desktopDirName = "Desktop";
+const imageFileName = "my-canvas.png";
+const homeDirPath = os.homedir();
+const desktopDirPath = path.join(homeDirPath, desktopDirName);
+const imageFilePath = path.join(desktopDirPath, imageFileName);
+
 export default {
   name: "HelloWorld",
   components: {
@@ -115,6 +132,16 @@ export default {
       console.log("プレビュー");
     },
     onclick4: function () {
+      const canvasDataUrl = this.imageCanvas.toDataURL();
+      const decoded = dataUriToBuffer(canvasDataUrl);
+      fs.writeFile(imageFilePath, decoded, (err) => {
+        if (err) {
+          window.alert("ファイルの保存に失敗しました");
+          console.log(err);
+        } else {
+          window.alert("ファイルを保存しました");
+        }
+      });
       console.log("保存");
     },
     onclick5: function () {
