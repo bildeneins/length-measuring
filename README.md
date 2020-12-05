@@ -1,29 +1,21 @@
-# sample
+# 長さ測定GUI
 
-## 今後の修正内容
-・バリデーション
-・定規デザイン修正
-・画像の保存
-
-## Project setup
+## セットアップ
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 開発用 コンパイルと実行
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+yarn electron:serve
 ```
 
-### Lints and fixes files
+### 製品用 コンパイルとビルド
+```
+yarn electron:build
+```
+
+### リント
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
