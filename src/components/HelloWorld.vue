@@ -93,6 +93,9 @@ import fs from "fs";
 import os from "os";
 import dataUriToBuffer from "data-uri-to-buffer";
 import path from "path";
+import { remote } from "electron"; //electron公式がremoteから移行していこうとしているので再検討の余地あり
+
+const { dialog } = remote.require("electron");
 
 // ファイルの保存先
 const desktopDirName = "Desktop";
@@ -127,17 +130,36 @@ export default {
       console.log("プレビュー");
     },
     onclick4: function() {
-      const canvasDataUrl = this.imageCanvas.toDataURL();
-      const decoded = dataUriToBuffer(canvasDataUrl);
-      fs.writeFile(imageFilePath, decoded, (err) => {
-        if (err) {
-          window.alert("ファイルの保存に失敗しました");
-          console.log(err);
-        } else {
-          window.alert("ファイルを保存しました");
-        }
-      });
-      console.log("保存");
+      const options = {
+        title: "ファイル保存",
+        defaultPath: imageFilePath,
+        message: "ファイル名を入力してください。",
+        nameFieldLabel: "ファイル名",
+        properties: ["createDirectory", "showOverwriteConfirmation"],
+      };
+      const enteredFilePath = dialog.showSaveDialogSync(null, options);
+      if (enteredFilePath === undefined) {
+        //ダイアログでキャンセルを選択するとundifinedが返される
+        console.log("Cancel selected in dialog");
+      } else {
+        const canvasDataUrl = this.imageCanvas.toDataURL();
+        const decoded = dataUriToBuffer(canvasDataUrl);
+        fs.writeFile(enteredFilePath, decoded, (err) => {
+          if (err) {
+            // window.alert("ファイルの保存に失敗しました");
+            dialog.showErrorBox("エラー", "ファイルを保存できません。");
+            console.log(err);
+          } else {
+            // window.alert("ファイルを保存しました");
+
+            dialog.showMessageBox(null, {
+              type: "info",
+              message: "ファイルを保存しました",
+            });
+          }
+        });
+        console.log("保存");
+      }
     },
     onclick5: function() {
       console.log("出力");
