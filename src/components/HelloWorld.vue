@@ -89,15 +89,10 @@
 
 <script>
 import ImageViewer from "@/components/ImageViewer";
-const remote = require("remote");
-const fs = remote.require("fs");
-const os = remote.require("os");
-const dataUriToBuffer = remote.require("data-uri-to-buffer");
-// const fs = require("fs");
-// const os = require("os");
-// const dataUriToBuffer = require("data-uri-to-buffer");
-
-const path = require("path");
+import fs from "fs";
+import os from "os";
+import dataUriToBuffer from "data-uri-to-buffer";
+import path from "path";
 
 // ファイルの保存先
 const desktopDirName = "Desktop";
@@ -122,16 +117,16 @@ export default {
     updateCanvas(canvas) {
       this.imageCanvas = canvas;
     },
-    onclick1: function () {
+    onclick1: function() {
       console.log("開始");
     },
-    onclick2: function () {
+    onclick2: function() {
       console.log("中断");
     },
-    onclick3: function () {
+    onclick3: function() {
       console.log("プレビュー");
     },
-    onclick4: function () {
+    onclick4: function() {
       const canvasDataUrl = this.imageCanvas.toDataURL();
       const decoded = dataUriToBuffer(canvasDataUrl);
       fs.writeFile(imageFilePath, decoded, (err) => {
@@ -144,7 +139,7 @@ export default {
       });
       console.log("保存");
     },
-    onclick5: function () {
+    onclick5: function() {
       console.log("出力");
     },
   },
