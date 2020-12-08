@@ -6,11 +6,11 @@
           <label for="input1" class="col-5 col-form-label">ワークの長さ</label>
           <div class="col-4" style="padding: 0">
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="input1"
               style="text-align: right"
-              v-model="length"
+              v-model.number="length"
             />
             <small id="passwordHelpInline1" class="text-muted float-right">
               cm
@@ -63,7 +63,8 @@
     </div>
     <br /><br />
 
-    <image-viewer v-on:update="updateCanvas"> </image-viewer>
+    <image-viewer v-on:update="updateCanvas" v-bind:length="length">
+    </image-viewer>
 
     <br /><br />
     <div class="float-right">
@@ -111,7 +112,7 @@ export default {
   },
   data() {
     return {
-      length: "10",
+      length: 10,
       time: "10",
       imageCanvas: null, // ImageViewerに入っているCanvas要素
     };
