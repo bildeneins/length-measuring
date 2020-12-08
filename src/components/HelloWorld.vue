@@ -1,10 +1,11 @@
 <template>
-  <div class="hello">
-    <div class="container">
-      <div class="row d-flex bd-highlight mb-3">
-        <div class="form-group row m-0 p-0">
-          <label for="input1" class="col-5 col-form-label">ワークの長さ</label>
-          <div class="col-4" style="padding: 0">
+  <div class="container-fluid hello">
+    <div class="row">
+      <div class="form-group col">
+        <label for="input1" class="">ワークの長さ</label>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-5">
             <input
               type="number"
               class="form-control"
@@ -16,9 +17,13 @@
               cm
             </small>
           </div>
+          <div class="col"></div>
         </div>
-        <div class="form-group row pl-1 pr-1">
-          <label for="input2" class="col-5 col-form-label">露光時間</label>
+      </div>
+      <div class="form-group col">
+        <label for="input2" class="">露光時間</label>
+        <div class="row">
+          <div class="col"></div>
           <div class="col-5">
             <input
               type="text"
@@ -31,45 +36,46 @@
               ms
             </small>
           </div>
-        </div>
-
-        <div class="float-right ml-auto p-2 bd-highlight mr-0">
-          <button
-            class="btn btn-outline-primary mr-2 rounded-0"
-            type="submit"
-            key="button1"
-            v-on:click="onclick1"
-          >
-            開始
-          </button>
-          <button
-            class="btn btn-outline-danger mr-2 rounded-0"
-            type="submit"
-            key="button2"
-            v-on:click="onclick2"
-          >
-            中断
-          </button>
-          <button
-            class="btn btn-outline-success mr-2 rounded-0"
-            type="submit"
-            key="button3"
-            v-on:click="onclick3"
-          >
-            プレビュー
-          </button>
+          <div class="col"></div>
         </div>
       </div>
     </div>
-    <br /><br />
 
-    <image-viewer v-on:update="updateCanvas" v-bind:length="length">
-    </image-viewer>
-
-    <br /><br />
-    <div class="float-right">
+    <div class="row d-flex justify-content-center p-2 mr-2 ml-2">
       <button
-        class="btn btn-outline-secondary mr-2 rounded-0"
+        class="btn btn-primary mr-2"
+        type="submit"
+        key="button1"
+        v-on:click="onclick1"
+      >
+        開始
+      </button>
+      <button
+        class="btn btn-danger mr-2"
+        type="submit"
+        key="button2"
+        v-on:click="onclick2"
+      >
+        中断
+      </button>
+      <button
+        class="btn btn-success mr-2"
+        type="submit"
+        key="button3"
+        v-on:click="onclick3"
+      >
+        プレビュー
+      </button>
+    </div>
+
+    <div class="row">
+      <image-viewer v-on:update="updateCanvas" v-bind:length="length">
+      </image-viewer>
+    </div>
+
+    <div class="row d-flex justify-content-center ">
+      <button
+        class="btn btn-secondary mr-2"
         type="submit"
         key="button4"
         v-on:click="onclick4"
@@ -77,7 +83,7 @@
         保存
       </button>
       <button
-        class="btn btn-outline-info mr-2 rounded-0"
+        class="btn btn-info mr-2 "
         type="submit"
         key="button5"
         v-on:click="onclick5"
@@ -170,4 +176,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+/* .hello {
+  padding: 1rem;
+  margin: 2rem;
+} */
+.form-group {
+  margin: 5px;
+  padding: 1rem;
+  background-color: #425065;
+  border-radius: 5px;
+}
+.row {
+  margin-bottom: 1rem;
+}
+</style>

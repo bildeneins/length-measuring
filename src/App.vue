@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    
-    <HelloWorld/>
+    <HelloWorld />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+};
 </script>
 
 <style>
+/* html,
+body {
+  height: 100%;
+} */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #ffffff;
+  padding: 60px;
+  height: 100%;
+
+  /* ダークモード */
+  background-color: #313852;
 }
+
+/* .btn-primary{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+} */
 </style>

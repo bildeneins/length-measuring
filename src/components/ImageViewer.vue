@@ -150,8 +150,10 @@ export default {
 
 <style scoped>
 #image-viewer {
-  margin-left: 85px;
-  border: 1px solid black;
+  padding: 0.5rem;
+  border: 1px #425066;
+  background-color: #425066;
+  border-radius: 5px;
   width: 1300px;
   height: 500px;
 }
